@@ -6,33 +6,32 @@
 // <!-- Primeiro, adicionar classes que irão
 // facilitar a manipulação dos elementos -->
 //<ul class="animais-lista js-tabmenu">
- // ...
+// ...
 //</ul>
 //<div class="animais-descricao js-tabcontent">
- // ...
+// ...
 //</div>
 
 // Selecionar os itens
 
-const tabMenu = document.querySelectorAll('.js-tabmenu li');
-const tabContent = document.querySelectorAll('.js-tabcontent section');
+const tabMenu = document.querySelectorAll(".js-tabmenu li");
+const tabContent = document.querySelectorAll(".js-tabcontent section");
 
 // Função Callback
 // Recebe index como parâmetro para ativar a tab. Sempre que ativar, remove a classe ativo de todos os outros elementos.
 
-
 function activeTab(index) {
   tabContent.forEach((content) => {
-    content.classList.remove('ativo');
+    content.classList.remove("ativo");
   });
-  tabContent[index].classList.add('ativo');
+  tabContent[index].classList.add("ativo");
 }
 
 // Adicionar o Evento
 // Neste caso precisamos passar antes a função anônima no callback, para podermos passar o index como argumento de activeTab
 
 tabMenu.forEach((itemMenu, index) => {
-  itemMenu.addEventListener('click', () => {
+  itemMenu.addEventListener("click", () => {
     activeTab(index);
   });
 });
@@ -73,3 +72,18 @@ tabMenu.forEach((itemMenu, index) => {
 // }
 
 // Lembre-se, o display none remove o texto até dos leitores de tela (acessibilidade)
+
+function loop() {
+  for (let i = 0; i <= 10; i++) {
+    console.log(i);
+  }
+}
+
+let lista = 0;
+
+function loopLista() {
+  while (lista <= 30) {
+    console.log(lista);
+    lista++;
+  }
+}
