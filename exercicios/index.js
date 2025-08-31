@@ -48,23 +48,52 @@ function initTabNav() {
 initTabNav();
 
 // accordion list
-function initAccordionList () {
- const accordionList = document.querySelectorAll(".js-accordion dt");
-const activeClass = 'ativo'
+function initAccordionList() {
+  const accordionList = document.querySelectorAll(".js-accordion dt");
+  const activeClass = "ativo";
 
-if(accordionList.length) {
- accordionList[0].classList.add(activeClass);
-accordionList[0].nextElementSibling.classList.add(activeClass);
+  if (accordionList.length) {
+    accordionList[0].classList.add(activeClass);
+    accordionList[0].nextElementSibling.classList.add(activeClass);
 
-function activeAccordion() {
-  this.classList.toggle(activeClass);
-  this.nextElementSibling.classList.toggle(activeClass);
+    function activeAccordion() {
+      this.classList.toggle(activeClass);
+      this.nextElementSibling.classList.toggle(activeClass);
+    }
+
+    accordionList.forEach((item) => {
+      item.addEventListener("click", activeAccordion);
+    });
+  }
 }
 
-accordionList.forEach((item) => {
-  item.addEventListener("click", activeAccordion);
-});
-}
-}
+initAccordionList();
 
-initAccordionList()
+// scroll suave
+
+const linksInterno = document.querySelectorAll('.js-menu a[href^="#"]');
+
+function initScrollSuave() {
+  function scrollToSection(event) {
+    event.preventDeFault();
+    const href = event.currentTarget.getAttribute("href");
+    const section = document.querySelector(href);
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    // forma alternativa
+    // const topo = section.offSetTop;
+    // window.scrollTo({
+    //   top: topo,
+    //   behavior: "smooth",
+    // });
+  }
+
+  linksInterno.forEach((link) => {
+    link.addEventListener("click", scrollToSection);
+  });
+}
+initScrollSuave();
